@@ -1,14 +1,14 @@
 <form #todoForm="ngForm" (ngSubmit)="onSubmit(todoForm)" class="center-form">
   <div>
     <label for="name">Nom du TODO :</label>
-    <input type="text" id="name" name="name" [ngModel] required class="blue-border"/>
+    <input type="text" id="name" name="name" [ngModel] required class="blue-border" placeholder="Saisir le nom de la tâche"/>
   </div>
   <div>
     <label for="description">Description du TODO :</label>
-    <input id="description" name="description" [ngModel] required class="blue-border"/>
+    <input id="description" name="description" [ngModel] required class="blue-border" placeholder="Saisir une description"/>
   </div>
   <div>
-    <button type="submit" [disabled]="!todoForm.valid">Ajouter Todo</button>
+    <button type="submit" [disabled]="!todoForm.valid">Ajouter le Todo</button>
   </div>
 </form>
   
