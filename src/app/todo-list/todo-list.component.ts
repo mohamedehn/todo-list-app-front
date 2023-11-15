@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../service/todo.service';
 import { TODO } from '../models/todo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
@@ -11,8 +12,9 @@ export class TodoListComponent implements OnInit{
 
   todos!: TODO[];
   show: boolean = false;
+  todo!: TODO;
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService, private router: Router) { }
 
   ngOnInit(): void {
     this.getTodoList(); 
@@ -25,31 +27,8 @@ export class TodoListComponent implements OnInit{
    });
   }
 
-  //création d'une fonction qui affiche la description au clique sur le name
-  showDescription(todo: TODO) {
-    todo.show = !todo.show;
-  }
-
-  //création d'une fonction pour supprimer une todo
-  deleteTodoList(id: number) {
-    this.todoService.deleteTodo(id).subscribe(data => {
-      console.log(data);
-      this.getTodoList();
-      window.location.reload();
-    });
-  }
-
-  //modifier une todo en ouvrant un formulaire d'édition
-  editDescription(todo: TODO) {
-    todo.editingDescription = true;
-  }
-
-  //enregistre la description modifiée
-  updateToDo(todo: TODO) {
-    this.todoService.updateTodo(todo.id, todo).subscribe(data => {
-      console.log(data);
-      this.getTodoList();
-      todo.editingDescription = false;
-    });
+  //permet d'allez vers la page d'un todo
+  goToTodo(todo: TODO){
+    this.router.navigate(['/todo', todo.id])
   }
 }

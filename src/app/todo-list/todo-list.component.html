@@ -1,16 +1,5 @@
 <div *ngFor="let todo of todos" class="card vertical hoverable center center-list">
     <div class="row">
-        <p (click)="showDescription(todo)" class="">{{todo.name}}</p>
-    </div>
-    <div *ngIf="todo.show">
-        <p>{{todo.description}}</p>
-        <p (click)="deleteTodoList(todo.id)" class="col s4 delete">Supprimer</p>
-        <p (click)="editDescription(todo)" class="col s4 update">Modifier</p>
-    </div>
-
-     <!-- Champ pour éditer la description -->
-    <div *ngIf="todo.editingDescription">
-        <textarea [(ngModel)]="todo.description"></textarea>
-        <button (click)="updateToDo(todo)" class="col s4 update">Enregistrer</button>
+        <p (click)="goToTodo(todo)" class="">{{todo.name}}</p>
     </div>
 </div>

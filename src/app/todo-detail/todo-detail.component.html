@@ -1,0 +1,13 @@
+<div class="card vertical hoverable center center-list col s4" *ngIf="todo">
+    <p>{{todo.name}}</p>
+    <p>{{todo.description}}</p>
+    <div class="options">
+        <p (click)="deleteTodoList(todo.id)" class="col s4 delete">Supprimer</p>
+        <p (click)="editDescription(todo)" class="col s4 update">Modifier</p>
+    </div>
+    <!-- Champ pour éditer la description -->
+    <div *ngIf="todo.editingDescription">
+        <textarea [(ngModel)]="todo.description"></textarea>
+        <button (click)="updateToDo(todo)" class="col s4 update">Enregistrer</button>
+    </div>
+</div>
